@@ -1,6 +1,6 @@
 # Mox
 
-Mox is a Drupal theme for Drupal 7.x. It can either be used as a basetheme, or you can just pick up the stuff you need and build your own. It's the starting point I use for most of my Drupal themes.
+Mox is a Drupal theme for Drupal 7.x. It can either be used as a basetheme, or you can just pick out the stuff you need and build your own. It's the starting point I use for most of my Drupal themes.
 
 The goal is to create a theme, that gets rid of all the unpleasantries, and adds just the stuff you need. Nothing more.
 
@@ -21,6 +21,7 @@ This theme contains code and scraps picked up over a few years. Most prominent i
 The next to-do implementing a complete and basic design of the following elements:
 
 * Layout
+* Basic navigation
 * Typography
 * Forms
 * Tables
