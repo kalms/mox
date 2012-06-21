@@ -1,0 +1,73 @@
+; General information
+name        = mox
+version     = 0.1
+description = Starter theme
+screenshot  = images/screenshot.png
+
+; Technical specifications
+core   = 7.x
+engine = phptemplate
+
+; Regions
+regions[help] = Help
+regions[highlighted] = Highlighted
+regions[header] = Header
+regions[promo] = Promo section
+regions[footer] = Footer
+regions[sidebar_first] = Sidebar First
+regions[sidebar_second] = Sidebar Second
+regions[content] = Content
+
+scripts[] = scripts/mox.js
+scripts[] = scripts/extend.js
+
+; Drupal system overrides
+stylesheets[all][] = styles/drupal.css
+
+; Theme
+stylesheets[all][] = styles/reset.css
+stylesheets[all][] = styles/drupal.css
+stylesheets[all][] = styles/base.css
+stylesheets[all][] = styles/grid.css
+stylesheets[all][] = styles/mox.css
+stylesheets[all][] = styles/forms.css
+stylesheets[print][] = styles/print.css
+
+; Omit core stylesheets.
+; Note that several stylesheets are left included because of their non-invasive
+; or isolated nature:
+;
+;   color/color.css
+;   locale/locale.css
+;
+; Other functionally critical styles should be reimplemented in `drupal.css`
+; without styles that compromise the typographical grid or otherwise complicate
+; subtheming.
+
+stylesheets[all][] = admin.css
+stylesheets[all][] = block.css
+stylesheets[all][] = book.css
+stylesheets[all][] = comment.css
+stylesheets[all][] = dblog.css
+stylesheets[all][] = defaults.css
+stylesheets[all][] = forum.css
+stylesheets[all][] = help.css
+stylesheets[all][] = maintenance.css
+stylesheets[all][] = node.css
+stylesheets[all][] = openid.css
+stylesheets[all][] = poll.css
+stylesheets[all][] = profile.css
+stylesheets[all][] = search.css
+stylesheets[all][] = system.css
+stylesheets[all][] = system.menus.css
+stylesheets[all][] = system.theme.css
+stylesheets[all][] = taxonomy.css
+stylesheets[all][] = tracker.css
+stylesheets[all][] = update.css
+stylesheets[all][] = user.css
+
+; Settings
+
+settings[mox_rebuild_registry] = 0
+settings[mox_debug] = 0
+

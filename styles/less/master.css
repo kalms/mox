@@ -1,0 +1,11 @@
+/**
+ * @file master.css.less
+ *
+ * This theme leverages the use of LESS CSS pre-processor (http://lesscss.org).
+ *
+ * These are the global defaults. Override or add more as needed.
+ */
+/* Defaults which you can freely override */
+/* Utility variable — you should never need to modify this */
+/* Set @total-width to 100% for a fluid layout */
+/* The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/ */

@@ -1,0 +1,37 @@
+/**
+ * @file cbs.css
+ *
+ * This file contains CBS specific styles.
+ */
+/* @group Layout */
+header,
+#navigation,
+#footer {
+  padding: 0 .9375em 2.142857143%;
+}
+#main > #content {
+  width: 66.666666664%;
+}
+.column.sidebar {
+  width: 33.333333332%;
+}
+/* @end */
+/* @group Forms */
+.search {
+  float: right;
+  width: 31.1827957%;
+  /* 290 / 930 */
+
+}
+.search input[type="text"] {
+  float: left;
+  border-right: none;
+}
+.search input[type="submit"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+/* @end */

@@ -1,0 +1,37 @@
+/* @group Forms */
+form div.form-item,
+form div.item-list {
+  position: relative;
+  margin: 0 0 1.428571429em;
+}
+input[type="text"],
+input[type="password"],
+input[type="search"] {
+  margin: 0;
+  padding: 4px 1%;
+  width: 100%;
+  font-size: 1.090909091em;
+  line-height: 1.5em;
+  border: none;
+  background: #dcdcdc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+input[type="submit"] {
+  margin: 0;
+  padding: 6px 8px 7px 8px;
+  line-height: 1em;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  color: #ffffff;
+  background: #3b5bbb;
+}
+input[type="submit"]:focus {
+  color: #212121;
+  background: #ffd016;
+}
+/* @end */
