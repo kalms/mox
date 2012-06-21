@@ -1,6 +1,6 @@
 ; General information
-name        = mox
-version     = 0.1
+name        = Mox
+version     = 7.x-0.2-dev
 description = Starter theme for Drupal 7.x
 screenshot  = assets/images/screenshot.png
 
@@ -18,22 +18,20 @@ regions[sidebar_first] = Sidebar First
 regions[sidebar_second] = Sidebar Second
 regions[content] = Content
 
-scripts[] = scripts/mox.js
+scripts[] = scripts/theme.js
 scripts[] = scripts/extend.js
 
 ; Drupal system overrides
-stylesheets[all][] = styles/drupal.css
+stylesheets[all][] = styles/css/drupal.css
 
 ; Theme
 stylesheets[all][] = styles/css/reset.css
-stylesheets[all][] = styles/css/drupal.css
 stylesheets[all][] = styles/css/base.css
 stylesheets[all][] = styles/css/grid.css
 stylesheets[all][] = styles/css/forms.css
 stylesheets[print][] = styles/css/print.css
 
-; See includes/base.inc for information on how to
-; override stylesheets from core!
+; See includes/base.inc for information on how to override stylesheets!
 
 settings[mox_rebuild_registry] = 0
 settings[mox_debug] = 0

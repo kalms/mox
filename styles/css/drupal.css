@@ -64,6 +64,7 @@ thead th {
   color: #008000;
 }
 div.messages {
+  clear: both;
   margin: 20px .9375em 15px;
   padding: 2%;
   border: none;
