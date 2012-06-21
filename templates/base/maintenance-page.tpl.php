@@ -12,13 +12,18 @@
  */
 ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language ?>" lang="<?php print $language->language ?>" dir="<?php print $language->dir ?>">
+<html <?php print $html_attributes . $rdf_namespaces; ?>>
 
 <head>
-  <title><?php print $head_title; ?></title>
   <?php print $head; ?>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- Mobile viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
   <?php print $scripts; ?>
+  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->  
 </head>
 <body class="<?php print $classes; ?>">
   <div id="page">

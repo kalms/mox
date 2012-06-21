@@ -65,6 +65,7 @@
  * @see template_process()
  */
 ?>
+<div id="container">
   <header>
     <?php if ($logo): ?>
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
@@ -139,3 +140,4 @@
   <footer id="footer">
     <?php print render($page['footer']); ?>
   </footer> <!-- /#footer -->
+</div>

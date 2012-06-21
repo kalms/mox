@@ -1,6 +1,11 @@
 /**
-* block/block.css
-*/
+ * @file 
+ * Courtesy of tao base theme.
+ */
+
+/**
+ * block/block.css
+ */
 #blocks td.region {
   font-weight: bold;
 }
@@ -15,8 +20,8 @@
 }
 
 /**
-* openid/openid.css
-*/
+ * openid/openid.css
+ */
 div#edit-openid-identifier-wrapper {
   display: block;
 }
@@ -191,7 +196,7 @@ dl.multiselect dd.a .form-item {
 * Animated throbber
 */
 html.js input.throbbing {
-  background: transparent url(drupal/throbber.gif) 100% 50% no-repeat;
+  background: transparent url(../../assets/images/drupal/throbber.gif) 100% 50% no-repeat;
 }
 
 /**
@@ -233,7 +238,7 @@ a.tabledrag-handle:hover {
 a.tabledrag-handle .handle {
   height: 20px;
   width: 20px;
-  background: url(drupal/draggable.png) 0px 0px no-repeat;
+  background: url(../../assets/images/drupal/draggable.png) 0px 0px no-repeat;
 }
 
 a.tabledrag-handle-hover .handle {
@@ -247,13 +252,13 @@ div.indentation {
 }
 
 div.tree-child {
-  background: url(drupal/tree.png) no-repeat 10px 50%;
+  background: url(../../assets/images/drupal/tree.png) no-repeat 10px 50%;
 }
 div.tree-child-last {
-  background: url(drupal/tree-bottom.png) no-repeat 10px 50%;
+  background: url(../../assets/images/drupal/tree-bottom.png) no-repeat 10px 50%;
 }
 div.tree-child-horizontal {
-  background: url(drupal/tree.png) no-repeat -10px 50%;
+  background: url(../../assets/images/drupal/tree.png) no-repeat -10px 50%;
 }
 
 /**
@@ -294,7 +299,7 @@ html.js .no-js {
 }
 
 .progress .bar {
-  background: #fff url(drupal/progress.gif);
+  background: #fff url(../../assets/images/drupal/progress.gif);
   border: 1px solid #035;
   height: 18px;
 }
@@ -318,7 +323,7 @@ html.js .no-js {
 .ahah-progress .throbber {
   width: 20px;
   height: 20px;
-  background: transparent url(drupal/throbber.gif) 50% 50% no-repeat;
+  background: transparent url(../../assets/images/drupal/throbber.gif) 50% 50% no-repeat;
   float: left;
 }
 
@@ -492,3 +497,11 @@ ul.tabs.primary li a:hover {
 .element-invisible {
   display: none;
 }
+
+/**
+ * Fix height issue on toolbar.
+ */
+#toolbar div.toolbar-menu {
+  min-height: 20px;
+}
+

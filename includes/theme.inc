@@ -17,6 +17,11 @@ function mox_theme(&$vars) {
     'template' => 'node',
     'path' => drupal_get_path('theme', 'mox') .'/templates/nodes',
   );
+  $items['fieldset'] = array(
+    'arguments' => array('element' => array()),
+    'template' => 'fieldset',
+    'path' => drupal_get_path('theme', 'mox') .'/templates/base',
+  );
   // Split out pager list into separate theme function.
   $items['pager_list'] = array('arguments' => array(
     'tags' => array(),

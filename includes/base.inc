@@ -2,6 +2,57 @@
 /**
  * @file base.inc
  */
+ 
+/**
+ * Implements hook_css_alter()..
+ *
+ * Omitted:
+ * - color.css
+ * - contextual.css
+ * - dashboard.css
+ * - field_ui.css
+ * - image.css
+ * - locale.css
+ * - shortcut.css
+ * - simpletest.css
+ * - toolbar.css
+ */
+function mox_css_alter(&$css) {
+  $exclude = array(
+    'misc/vertical-tabs.css' => FALSE,
+    'modules/aggregator/aggregator.css' => FALSE,
+    'modules/block/block.css' => FALSE,
+    'modules/book/book.css' => FALSE,
+    'modules/comment/comment.css' => FALSE,
+    'modules/dblog/dblog.css' => FALSE,
+    'modules/file/file.css' => FALSE,
+    'modules/filter/filter.css' => FALSE,
+    'modules/forum/forum.css' => FALSE,
+    'modules/help/help.css' => FALSE,
+    'modules/menu/menu.css' => FALSE,
+    'modules/node/node.css' => FALSE,
+    'modules/openid/openid.css' => FALSE,
+    'modules/poll/poll.css' => FALSE,
+    'modules/profile/profile.css' => FALSE,
+    'modules/search/search.css' => FALSE,
+    'modules/statistics/statistics.css' => FALSE,
+    'modules/syslog/syslog.css' => FALSE,
+    'modules/system/admin.css' => FALSE,
+    'modules/system/maintenance.css' => FALSE,
+    'modules/system/system.css' => FALSE,
+    'modules/system/system.admin.css' => FALSE,
+    'modules/system/system.base.css' => FALSE,
+    'modules/system/system.maintenance.css' => FALSE,
+    'modules/system/system.menus.css' => FALSE,
+    'modules/system/system.messages.css' => FALSE,
+    'modules/system/system.theme.css' => FALSE,
+    'modules/taxonomy/taxonomy.css' => FALSE,
+    'modules/tracker/tracker.css' => FALSE,
+    'modules/update/update.css' => FALSE,
+    'modules/user/user.css' => FALSE,
+  );
+  $css = array_diff_key($css, $exclude);
+}
 
 /**
  * Returns HTML for a breadcrumb trail.
@@ -19,6 +70,7 @@ function mox_breadcrumb($variables) {
     $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
 
     $output .= '<div class="breadcrumb">' . implode(' » ', $breadcrumb) . '</div>';
+    
     return $output;
   }
 }
@@ -53,9 +105,6 @@ function mox_username($variables) {
 
 /**
  * Implementation of theme_image().
- *
- * @todo
- * Check if related to responsive, as I suspect.
  */
 function mox_image($variables) {
   $attributes = $variables['attributes'];
@@ -65,13 +114,39 @@ function mox_image($variables) {
   }
 
   foreach (array('width', 'height', 'alt', 'title', 'data-hover') as $key) {
-
     if (isset($variables[$key])) {
       $attributes[$key] = $variables[$key];
     }
   }
 
   return '<img' . drupal_attributes($attributes) . ' />';
+}
+
+/**
+ * Override of theme('textarea').
+ * Deprecate misc/textarea.js in favor of using the 'resize' CSS3 property.
+ */
+function mox_textarea($variables) {
+  $element = $variables['element'];
+  $element['#attributes']['name'] = $element['#name'];
+  $element['#attributes']['id'] = $element['#id'];
+  $element['#attributes']['cols'] = $element['#cols'];
+  $element['#attributes']['rows'] = $element['#rows'];
+  _form_set_class($element, array('form-textarea'));
+
+  $wrapper_attributes = array(
+    'class' => array('form-textarea-wrapper'),
+  );
+
+  // Add resizable behavior.
+  if (!empty($element['#resizable'])) {
+    $wrapper_attributes['class'][] = 'resizable';
+  }
+
+  $output = '<div' . drupal_attributes($wrapper_attributes) . '>';
+  $output .= '<textarea' . drupal_attributes($element['#attributes']) . '>' . check_plain($element['#value']) . '</textarea>';
+  $output .= '</div>';
+  return $output;
 }
 
 /**
@@ -90,6 +165,11 @@ function mox_panels_default_style_render_region($vars) {
 
 /**
  * Override of theme_pager().
+ * Taken from the tao theme. I agree with all their stated points:
+ *
+ * Goals: consolidate functionality into less than 5 functions and
+ * ensure the markup will not conflict with major other styles
+ * (theme_item_list() in particular).
  */
 function mox_pager($vars) {
   $tags = $vars['tags'];
@@ -99,6 +179,11 @@ function mox_pager($vars) {
   $pager_list = theme('pager_list', $vars);
 
   $links = array();
+  $links['pager-first'] = theme('pager_first', array(
+    'text' => (isset($tags[0]) ? $tags[0] : t('First')),
+    'element' => $element,
+    'parameters' => $parameters
+  ));
   $links['pager-previous'] = theme('pager_previous', array(
     'text' => (isset($tags[1]) ? $tags[1] : t('Prev')),
     'element' => $element,
@@ -109,6 +194,11 @@ function mox_pager($vars) {
     'text' => (isset($tags[3]) ? $tags[3] : t('Next')),
     'element' => $element,
     'interval' => 1,
+    'parameters' => $parameters
+  ));
+  $links['pager-last'] = theme('pager_last', array(
+    'text' => (isset($tags[4]) ? $tags[4] : t('Last')),
+    'element' => $element,
     'parameters' => $parameters
   ));
   $links = array_filter($links);
@@ -242,4 +332,48 @@ function mox_pager_link($vars) {
     'attributes' => $attributes,
     'query' => count($query) ? $query : NULL,
   );
+}
+
+/**
+ * Override of theme_views_mini_pager().
+ */
+function mox_views_mini_pager($vars) {
+  $tags = $vars['tags'];
+  $quantity = $vars['quantity'];
+  $element = $vars['element'];
+  $parameters = $vars['parameters'];
+
+  global $pager_page_array, $pager_total;
+
+  // Calculate various markers within this pager piece:
+  // Middle is used to "center" pages around the current page.
+  $pager_middle = ceil($quantity / 2);
+  // current is the page we are currently paged to
+  $pager_current = $pager_page_array[$element] + 1;
+  // max is the maximum page number
+  $pager_max = $pager_total[$element];
+  // End of marker calculations.
+
+  $links = array();
+  if ($pager_total[$element] > 1) {
+    $links['pager-previous'] = theme('pager_previous', array(
+      'text' => (isset($tags[1]) ? $tags[1] : t('Prev')),
+      'element' => $element,
+      'interval' => 1,
+      'parameters' => $parameters
+    ));
+    $links['pager-current'] = array(
+      'title' => t('@current of @max', array(
+        '@current' => $pager_current,
+        '@max' => $pager_max)
+      )
+    );
+    $links['pager-next'] = theme('pager_next', array(
+      'text' => (isset($tags[3]) ? $tags[3] : t('Next')),
+      'element' => $element,
+      'interval' => 1,
+      'parameters' => $parameters
+    ));
+    return theme('links', array('links' => $links, 'attributes' => array('class' => array('links', 'pager', 'views-mini-pager'))));
+  }
 }

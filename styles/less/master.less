@@ -18,15 +18,15 @@
 @total-width: @gridsystem-width;
 
 /* The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/ */
-.clearfix() {
-  *zoom:1;
+.clear() {
+  *zoom: 1;
 
   &:before,
   &:after {
-    content:"";
-    display:table;
+    content: "";
+    display: table;
   }
   &:after {
-    clear:both;
+    clear: both;
   }
 }

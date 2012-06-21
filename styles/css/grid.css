@@ -17,33 +17,51 @@
 /* Utility variable — you should never need to modify this */
 /* Set @total-width to 100% for a fluid layout */
 /* The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/ */
-/* Uncomment if you don't want iOS and WinMobile to mobile-optimize the text for you: j.mp/textsizeadjust */
-html {
-  width: 100%;
-  *zoom: 1;
-  -webkit-text-size-adjust: none;
-  -ms-text-size-adjust: none;
-}
-html:before,
-html:after {
-  content: "";
-  display: table;
-}
-html:after {
-  clear: both;
-}
 /**
  * Using border-box for elastic gutters.
  *
  * Beware! IE7 does not support this.
  */
-* {
+#container * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -o-box-sizing: border-box;
   box-sizing: border-box;
 }
 /* Uncomment these two lines and the star-hack width/margin lines below to enable sub-pixel fix for IE6 & 7. See http://tylertate.com/blog/2012/01/05/subpixel-rounding.html */
+/**
+ * Layout
+ */
+#container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+#container header,
+#container #navigation,
+#container #footer {
+  display: inline;
+  float: left;
+  width: 940px;
+  margin: 0 10px;
+  *width: 939.9479166666666px;
+  *margin: 0 9.947916666666666px;
+}
+#container #main > #content {
+  display: inline;
+  float: left;
+  width: 620px;
+  margin: 0 10px;
+  *width: 619.9479166666666px;
+  *margin: 0 9.947916666666666px;
+}
+#container .column.sidebar {
+  display: inline;
+  float: left;
+  width: 300px;
+  margin: 0 10px;
+  *width: 299.9479166666667px;
+  *margin: 0 9.947916666666666px;
+}
 /** 
  * @media screen and (min-width: 760px) 
  *

@@ -4,6 +4,10 @@
 * This file contains general layout and typographic styles.
 */
 /* @group Global */
+html {
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+}
 html,
 body {
   width: 100%;

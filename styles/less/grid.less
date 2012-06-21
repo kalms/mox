@@ -9,20 +9,12 @@
 /* Import master */
 @import url(master.less);
 
-/* Uncomment if you don't want iOS and WinMobile to mobile-optimize the text for you: j.mp/textsizeadjust */
-html { 
-  width: 100%;
-  .clearfix;
-  -webkit-text-size-adjust: none; 
-  -ms-text-size-adjust: none; 
-}
-
 /**
  * Using border-box for elastic gutters.
  *
  * Beware! IE7 does not support this.
  */
-* {
+#container * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -o-box-sizing: border-box;
@@ -39,10 +31,10 @@ html {
   margin: 0 @total-width*(((@gutter-width*.5)/@gridsystem-width)*-1);
   *width: @total-width*((@gutter-width + @gridsystem-width)/@gridsystem-width)-@correction;
   *margin: 0 @total-width*(((@gutter-width*.5)/@gridsystem-width)*-1)-@correction;
-  .clearfix;
+  .clear;
 }
 
-.column(@x,@columns:@columns) {
+.col(@x,@columns:@columns) {
   display: inline;
   float: left;
   width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width);
@@ -58,6 +50,35 @@ html {
 .inset(@offset:1) {
   margin-right: @total-width*(((@gutter-width+@column-width)*@offset) / @gridsystem-width) + @total-width*((@gutter-width*.5)/@gridsystem-width);
 }
+
+/**
+ * Layout
+ */
+
+#container {
+  max-width: 960px;
+  margin: 0 auto;
+  
+  header,
+  #navigation,
+  #footer {
+   .col(12);
+  } 
+  
+  #main > #content {
+    .col(8);
+  }
+  
+  .column.sidebar {
+    .col(4);
+  }
+}
+
+
+
+
+
+
 
 /** 
  * @media screen and (min-width: 760px) 
