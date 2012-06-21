@@ -1,7 +1,6 @@
 /**
  * Site specific JavaScript.
  */
-
 (function ($) {
 
   // Drupal.behaviors.exampleModule = {

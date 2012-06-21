@@ -25,13 +25,13 @@ scripts[] = scripts/extend.js
 stylesheets[all][] = styles/drupal.css
 
 ; Theme
-stylesheets[all][] = styles/reset.css
-stylesheets[all][] = styles/drupal.css
-stylesheets[all][] = styles/base.css
-stylesheets[all][] = styles/grid.css
-stylesheets[all][] = styles/mox.css
-stylesheets[all][] = styles/forms.css
-stylesheets[print][] = styles/print.css
+stylesheets[all][] = styles/css/reset.css
+stylesheets[all][] = styles/css/drupal.css
+stylesheets[all][] = styles/css/base.css
+stylesheets[all][] = styles/css/grid.css
+stylesheets[all][] = styles/css/mox.css
+stylesheets[all][] = styles/css/forms.css
+stylesheets[print][] = styles/css/print.css
 
 ; Omit core stylesheets.
 ; Note that several stylesheets are left included because of their non-invasive
