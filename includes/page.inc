@@ -42,4 +42,9 @@ function mox_preprocess_page(&$vars) {
       $vars['theme_hook_suggestions'][] = 'page__panel';
     }
   }
+  
+  $background_image = theme_get_setting('mox_image');
+  
+  // Assign header image.
+  $vars['background_image'] = theme('image', array('path' => $background_image->uri, 'width' => '', 'height' => ''));
 }

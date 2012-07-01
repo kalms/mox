@@ -8,7 +8,7 @@ You won't find a plethora of different theme-settings, only a few very basic thi
 
 - Beware! This version is in alpha, but the theme should be usable as it is. Feel free to check it out.
 
-This theme builds on code and scraps picked up over a few years. Standing on the shoulders of giants.
+This theme builds on code and scraps picked up over a few years. Standing on shoulders of giants.
 
 ## Mox features as of 2012-06-21:
 
